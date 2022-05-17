@@ -13,7 +13,7 @@ const completeRegister = require('../controller/completeController')
 const registerCourse = require('../controller/courseController')
 
 const app = express()
-const port = 5000
+const port = process.env.PORT || 5000
 
 app.use(express.json())
 app.use(fileUpload())
