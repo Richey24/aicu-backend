@@ -22,7 +22,7 @@ app.use('/image', express.static('../img'))
 
 const start = async () => {
     try {
-        await connectDB(MongoDB_URL)
+        connectDB(MongoDB_URL)
         app.listen(port, () => console.log(`Example app listening on port ${port}!`))
     } catch (error) {
         console.log(error);
