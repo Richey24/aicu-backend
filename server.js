@@ -22,22 +22,26 @@ const port = process.env.PORT || 5000;
 app.use(express.json());
 app.use(fileUpload());
 app.use(cors());
-app.use("/image", express.static("../img"));
 
-const start = async () => {
-  try {
-    connectDB(MongoDB_URL);
-    app.listen(port, () =>
-      console.log(`Example app listening on port ${port}!`)
-    );
-  } catch (error) {
-    console.log(error);
-  }
-};
+// const start = async () => {
+//   try {
+//     connectDB(MongoDB_URL);
 
-start();
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
-app.get("/", (req, res) => res.json("Hello World!"));
+// start();
+
+// console.log(__dirname + "/aicu-backend/img");
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+
+app.get("/", (req, res) => {
+  res.download("./img/");
+  res.headersSent;
+});
 // app.post("/register", registerUser);
 // app.post("/login", loginUser);
 // app.post("/get", getOne);
@@ -50,4 +54,4 @@ app.post("/delete/image", deleteImage);
 // app.post("/course", registerCourse);
 // app.post("/shorten", shortenController);
 // app.get("/:code", redirectController);
-app.use("/image", express.static(__dirname + "/../img"));
+app.use("/image", express.static(__dirname + "/../aicu-backend/img"));
